@@ -20,9 +20,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+         //   signingConfig getSigningConfig()
             firebaseAppDistribution {
                 serviceCredentialsFile = "cicd-4061a-ede567dda811.json"
-                apk_path = "app/build/outputs/apk/release/app-release.apk"
+                //apk_path = "app/build/outputs/apk/release/app-release.apk"
                // testers="brijeshbhatt09@gmail.com"
             }
         }
