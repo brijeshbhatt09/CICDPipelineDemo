@@ -22,6 +22,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             firebaseAppDistribution {
                 serviceCredentialsFile = "cicd-4061a-ede567dda811.json"
+                apk_path = "app/build/outputs/apk/release/app-release.apk"
                // testers="brijeshbhatt09@gmail.com"
             }
         }
