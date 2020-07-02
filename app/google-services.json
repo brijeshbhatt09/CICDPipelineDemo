@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "314287532505",
+    "firebase_url": "https://cicd-4061a.firebaseio.com",
+    "project_id": "cicd-4061a",
+    "storage_bucket": "cicd-4061a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:314287532505:android:9f33805eb83ceeb85551c8",
+        "android_client_info": {
+          "package_name": "com.example.cicdpipeline"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "314287532505-h26pul59fod97phfpksq1u3eccva8ci6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAi3kgQ6G8RwayroM6e6dbRVRpymqbcSJE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "314287532505-h26pul59fod97phfpksq1u3eccva8ci6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
