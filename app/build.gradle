@@ -20,10 +20,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-           /* firebaseAppDistribution {
+            firebaseAppDistribution {
                 serviceCredentialsFile = "cicd-4061a-ede567dda811.json"
-                testers="brijeshbhatt09@gmail.com"
-            }*/
+               // testers="brijeshbhatt09@gmail.com"
+            }
         }
     }
 
