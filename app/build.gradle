@@ -42,8 +42,7 @@ android {
             signingConfig signingConfigs.config
             firebaseAppDistribution {
                 serviceCredentialsFile = "cicd-4061a-ede567dda811.json"
-                //apk_path = "app/build/outputs/apk/release/app-release.apk"
-               // testers="brijeshbhatt09@gmail.com"
+                groups="yovo"
             }
         }
     }
