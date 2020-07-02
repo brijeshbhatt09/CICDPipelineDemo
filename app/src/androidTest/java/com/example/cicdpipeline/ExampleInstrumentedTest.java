@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.example.cicdpipesdline", appContext.getPackageName());
+        assertEquals("com.example.cicdpipeline", appContext.getPackageName());
     }
 }
