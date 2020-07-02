@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 29
@@ -19,6 +20,12 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+
+        firebaseAppDistribution {
+            releaseNotes = "Test Notes"
+            serviceCredentialsFile = "$rootDir/cicd-4061a-firebase-adminsdk-t2527-bf6854df3a.json"
+            testers="brijeshbhatt09@gmail.com"
+        }
     }
 
 }
@@ -31,4 +38,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'com.google.firebase:firebase-analytics:17.2.2'
 }
+apply plugin: 'com.google.firebase.appdistribution'
