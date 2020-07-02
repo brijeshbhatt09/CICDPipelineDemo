@@ -22,7 +22,6 @@ android {
         }
 
         firebaseAppDistribution {
-            releaseNotes = "Test Notes"
             serviceCredentialsFile = "$rootDir/cicd-4061a-firebase-adminsdk-t2527-bf6854df3a.json"
             testers="brijeshbhatt09@gmail.com"
         }
