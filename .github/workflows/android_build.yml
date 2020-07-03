@@ -45,7 +45,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: CICDArtifacts
-          path: app/build/reports/lint-results.xml
+          path: app/build/reports
 
 
 
@@ -73,6 +73,5 @@ jobs:
         with:
          name: CICDArtifacts
          path: app/build/outputs/apk/release/app-release.apk
-
 
 
