@@ -27,13 +27,6 @@ jobs:
       - name: Unit Tests
         run: ./gradlew test
 
-      - name: Artifact Test Report
-        if: ${{ failure() }}
-        uses: actions/upload-artifact@v1
-        with:
-          name: CICDArtifacts
-          path: app/build/reports
-
       - name: Build Project
         run: ./gradlew assemble
 
