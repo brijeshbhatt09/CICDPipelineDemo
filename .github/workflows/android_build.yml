@@ -31,7 +31,7 @@ jobs:
         if: ${{ always() }}
         uses: actions/upload-artifact@v1
         with:
-          name: app
+          name: CICD
           path: app/build/test-results/testDebugUnitTest/TEST-com.example.cicdpipeline.ExampleUnitTest.xml
 
       - name: Build Project
@@ -39,6 +39,7 @@ jobs:
 
       - name: Build Analysis
         run: ./gradlew lint
+
 
   test:
     needs: build
