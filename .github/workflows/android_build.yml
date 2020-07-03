@@ -26,25 +26,16 @@ jobs:
 
       - name: Unit Tests
         run: ./gradlew test
-
-      - name: Upload Test Results
         uses: actions/upload-artifact@v1
         with:
-          name: UnitTestResults
-          path: app/build/test-results/**/TEST-*.xml
-
+          name: UnitTestReults
+          path: app/build/test-results/testDebugUnitTest/TEST-com.example.cicdpipeline.ExampleUnitTest.xml
 
       - name: Build Project
         run: ./gradlew assemble
 
       - name: Build Analysis
         run: ./gradlew lint
-
-      - name: Upload Analysis Results
-        uses: actions/upload-artifact@v1
-        with:
-          name: AnalysisResults
-          path: app/build/reports/lint-results-*.xml
 
   test:
     needs: build
