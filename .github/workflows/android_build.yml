@@ -27,12 +27,12 @@ jobs:
       - name: Unit Tests
         run: ./gradlew test
 
-      - name: Artifact Test Results
-        if: ${{ always() }}
+      - name: Artifact Test Report
+        if: ${{ fail() }}
         uses: actions/upload-artifact@v1
         with:
           name: CICDArtifacts
-          path: app/build/test-results/testDebugUnitTest/TEST-com.example.cicdpipeline.ExampleUnitTest.xml
+          path: app/build/reports
 
       - name: Build Project
         run: ./gradlew assemble
@@ -40,7 +40,7 @@ jobs:
       - name: Build Analysis
         run: ./gradlew lint
 
-      - name: Artifact Analysis Results
+      - name: Artifact Build report
         if: ${{ always() }}
         uses: actions/upload-artifact@v1
         with:
