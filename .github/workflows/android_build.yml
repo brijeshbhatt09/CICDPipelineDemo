@@ -23,3 +23,6 @@ jobs:
 
       - name: Build Project
         run: ./gradlew assemble
+
+      - name: Deliver Project
+        run: ./gradlew appDistributionUploadRelease
