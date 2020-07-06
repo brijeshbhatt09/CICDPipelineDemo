@@ -61,7 +61,7 @@ jobs:
       - name: Deliver Project
         run: ./gradlew appDistributionUploadRelease
 
-      - name: Artifacts Upload APK
+      - name: Artifacts APK
         uses: actions/upload-artifact@v1
         with:
          name: CICDArtifacts
