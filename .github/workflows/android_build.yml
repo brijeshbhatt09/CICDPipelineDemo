@@ -41,7 +41,7 @@ jobs:
           path: app/build/reports
 
   Deliver:
-    needs: test
+    needs: build
 
     runs-on: ubuntu-latest
 
