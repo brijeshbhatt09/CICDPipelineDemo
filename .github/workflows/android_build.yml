@@ -68,7 +68,7 @@ jobs:
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.PLAYSTORE_ACCOUNT_KEY }}
-          packageName: com.example.cicdpipeline
+          packageName: com.CICDPipelineDemo
           releaseFile: app/build/outputs/apk/release/app-release.apk
           track: beta
           whatsNewDirectory: distribution/whatsnew
