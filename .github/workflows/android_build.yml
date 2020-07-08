@@ -47,12 +47,13 @@ jobs:
          path: app/build/outputs/apk/release/app-release.apk  
       - name: upload app to pCloudy
         env:
-          BROWSERSTACK_ACCESS_KEY: rhHsE7Vd1a61TWpPGxad
-          BROWSERSTACK_USERNAME: abhishekchauhan13
+          PCLOUDY_USERNAME: ${{ secrets.PCLOUDY_USERNAME }}
+          PCLOUDY_ACCESS_KEY: ${{ secrets.PCLOUDY_ACCESS_KEY }}
         run: |
            echo "install cURL"
            sudo apt install curl
            echo "Verify install of curl on Ubuntu"
            curl --version     
-           echo "upload apk"
-           curl -u "abhishekchauhan13:rhHsE7Vd1a61TWpPGxad" -X POST "https://api-cloud.browserstack.com/app-live/upload" -F "file=@/app/build/outputs/apk/release/app-release.apk"
+           echo "generate authToken"
+           curl -u '${{ secrets.PCLOUDY_USERNAME }}:${{ secrets.PCLOUDY_ACCESS_KEY }}' https://device.pcloudy.com -o myfile.txt
+       
