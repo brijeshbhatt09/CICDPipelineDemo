@@ -55,5 +55,5 @@ jobs:
            echo "Verify install of curl on Ubuntu"
            curl --version     
            echo "generate authToken"
-           curl -u '${{ secrets.PCLOUDY_USERNAME }}:${{ secrets.PCLOUDY_ACCESS_KEY }}' https://device.pcloudy.com -o myfile.txt
+           curl -u '${{ secrets.PCLOUDY_USERNAME }}:${{ secrets.PCLOUDY_ACCESS_KEY }}' https://device.pcloudy.com -o app/myfile.txt
        
