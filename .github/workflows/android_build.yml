@@ -56,5 +56,5 @@ jobs:
            curl --version     
            echo "generate token"
            echo "upload apk"
-           curl -X POST -F "file=app/build/outputs/apk/release/app-release.apk  " -F "source_type=raw" -F "token=ypythd8865t7fvwbq3wn6m7f" -F "filter=all" https://device.pcloudy.com/api/upload_file
+           curl -X POST -F "file=app/build/outputs/apk/release/app-release.apk  " -F "source_type=raw" -F "token='$(curl -u "${{ secrets.PCLOUDY_USERNAME }}:${{ secrets.PCLOUDY_ACCESS_KEY }}" https://device.pcloudy.com/api/access)'" -F "filter=all" https://device.pcloudy.com/api/upload_file
        
