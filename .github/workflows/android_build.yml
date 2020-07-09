@@ -53,6 +53,8 @@ jobs:
            echo "install cURL"
            sudo apt install curl
            echo "Verify install of curl on Ubuntu"
-           curl --version     
+           curl --version    
+           echo generate token
+           var = $(curl -u "${{ secrets.PCLOUDY_USERNAME }}:${{ secrets.PCLOUDY_ACCESS_KEY }}" https://device.pcloudy.com/api/access)) 
            echo "upload apk"
-           curl -X POST -F "file=@/home/runner/work/CICDPipelineDemo/CICDPipelineDemo/app/build/outputs/apk/release/app-release.apk" -F "source_type=raw" -F "token='$(curl -u "${{ secrets.PCLOUDY_USERNAME }}:${{ secrets.PCLOUDY_ACCESS_KEY }}" https://device.pcloudy.com/api/access)'" -F "filter=all" https://device.pcloudy.com/api/upload_file
+           curl -X POST -F "file=@/home/runner/work/CICDPipelineDemo/CICDPipelineDemo/app/build/outputs/apk/release/app-release.apk" -F "source_type=raw" -F "token=var" -F "filter=all" https://device.pcloudy.com/api/upload_file
