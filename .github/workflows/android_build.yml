@@ -51,9 +51,9 @@ jobs:
           SauceLab_ACCESS_KEY: f542b209-916c-4932-8a1c-a8b162050eb4
         run: |
            echo "install cURL"
-           
            sudo apt install curl
            echo "Verify install of curl on Ubuntu"
            curl --version     
            echo "upload apk"
-           curl -u abhi1939:f542b209-916c-4932-8a1c-a8b162050eb4 -X POST -H "Content-Type: application/octet-stream" \"https://saucelabs.com/rest/v1/storage/$SAUCE_USERNAME/$APP_NAME?overwrite=true" --data-binary @/app/build/outputs/apk/release/app-release.apk  
+           $ curl -u abhi1939:f542b209-916c-4932-8a1c-a8b162050eb4 -X POST -H "Content-Type: application/octet-stream" \
+           "https://saucelabs.com/rest/v1/storage/$SAUCE_USERNAME/$APP_NAME?overwrite=true" --data-binary @/app/build/outputs/apk/release/app-release.apk
