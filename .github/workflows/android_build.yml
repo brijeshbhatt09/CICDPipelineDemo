@@ -54,7 +54,6 @@ jobs:
            sudo apt install curl
            echo "Verify install of curl on Ubuntu"
            curl --version     
-           echo "generate token"
            echo "upload apk"
-           curl -X POST -F "file=app/build/outputs/apk/release/app-release.apk" -F "source_type=raw" -F "token=dgwxfh6xdjx7xt5g29dqgmjq" -F "filter=all" https://device.pcloudy.com/api/upload_file
+           curl -X POST -F "file=app/build/outputs/apk/release/app-release.apk" -F "source_type=raw" -F "token=bdpfnynv85zzpgb9kk8j99gr" -F "filter=all" https://device.pcloudy.com/api/upload_file
 
