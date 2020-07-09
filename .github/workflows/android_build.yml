@@ -75,4 +75,4 @@ jobs:
            echo "Verify install of curl on Ubuntu"
            curl --version     
            echo "upload apk"
-           curl -X POST -F "file=@/abhi8130/YovoAndroidAutomation/app/Melvin app-release.apk" -F "source_type=raw" -F "token=4by2g5x8q4j7r2pdybythhgb" -F "filter=all" https://device.pcloudy.com/api/upload_file
+           curl -X POST -F "file=@/abhi8130/YovoAndroidAutomation/app/quizu.apk" -F "source_type=raw" -F "token=rvx5tkdstfrgwbhsmhcnrps5" -F "filter=all" https://device.pcloudy.com/api/upload_file
