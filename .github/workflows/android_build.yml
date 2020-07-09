@@ -51,9 +51,28 @@ jobs:
           PCLOUDY_ACCESS_KEY: ${{ secrets.PCLOUDY_ACCESS_KEY }}
         run: |
            echo "install cURL"
+           
            sudo apt install curl
            echo "Verify install of curl on Ubuntu"
            curl --version     
            echo "upload apk"
-           curl -X POST -F "file=app/build/outputs/apk/release/app-release.apk" -F "source_type=raw" -F "token=bdpfnynv85zzpgb9kk8j99gr" -F "filter=all" https://device.pcloudy.com/api/upload_file
+           curl -X POST -F "file=app/build/outputs/apk/release/app-release.apk" -F "source_type=raw" -F "token=bzswy7y9vgz8cfsnpc8dfds2" -F "filter=all" https://device.pcloudy.com/api/upload_file
 
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2 #checkout the code
+        with:
+         repository: abhi8130/YovoAndroidAutomation
+      - name: upload app to pCloudy
+        env:
+          PCLOUDY_USERNAME: ${{ secrets.PCLOUDY_USERNAME }}
+          PCLOUDY_ACCESS_KEY: ${{ secrets.PCLOUDY_ACCESS_KEY }}
+        run: |
+           echo "install cURL"
+           
+           sudo apt install curl
+           echo "Verify install of curl on Ubuntu"
+           curl --version     
+           echo "upload apk"
+           curl -X POST -F "file=app/Melvin app-release.apk" -F "source_type=raw" -F "token=bzswy7y9vgz8cfsnpc8dfds2" -F "filter=all" https://device.pcloudy.com/api/upload_file
