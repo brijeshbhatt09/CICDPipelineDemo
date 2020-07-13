@@ -44,7 +44,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: CICDArtifacts
-          path: app/build/outputs/apk/release/app-release.apk
+          path: app/build/outputs/bundle/release/app-release.aab
 
       - name: upload app to pCloudy
         env:
@@ -56,7 +56,7 @@ jobs:
             echo "Verify install of curl on Ubuntu"
             curl --version
             echo "upload apk"
-            curl -X POST -F "file=@/home/runner/work/CICDPipelineDemo/CICDPipelineDemo/app/build/outputs/apk/release/app-release.apk" -F "source_type=raw" -F "token=c5dpj77vk3rhff67by4rt9xm" -F "filter=all" https://device.pcloudy.com/api/upload_file
+            curl -X POST -F "file=@/home/runner/work/CICDPipelineDemo/CICDPipelineDemo/app/build/outputs/bundle/release/app-release.aab" -F "source_type=raw" -F "token=c5dpj77vk3rhff67by4rt9xm" -F "filter=all" https://device.pcloudy.com/api/upload_file
 
 
   test:
