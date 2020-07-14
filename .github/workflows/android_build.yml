@@ -109,17 +109,17 @@ jobs:
           java-version: 1.8
 
       - name: Build Project
-        run: ./gradlew bundleRelease
+        run: ./gradlew assembleRelease
 
       - name: Sign Apk
         id: sign
         uses: r0adkll/sign-android-release@v1
-         with:
-           releaseDirectory: app/build/outputs/apk/release
-           signingKeyBase64: ${{ secrets.SIGNING_KEY }}
-           alias: ${{ secrets.ALIAS }}
-           keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
-           keyPassword: ${{ secrets.KEY_PASSWORD }}
+        with:
+          releaseDirectory: app/build/outputs/apk/release
+          signingKeyBase64: ${{ secrets.SIGNING_KEY }}
+          alias: ${{ secrets.ALIAS }}
+          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
+          keyPassword: ${{ secrets.KEY_PASSWORD }}
 
       - name: upload artifact to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1
