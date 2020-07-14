@@ -21,7 +21,14 @@ jobs:
       - name: Clean
         run: ./gradlew clean
 
+      - name: Compile
+        run: ./gradlew compileDebugSources
 
+      - name: Unit Tests
+        run: ./gradlew test
+
+      - name: Build Project
+        run: ./gradlew assembleRelease
 
       - name: Sign Apk
         id: sign
@@ -95,6 +102,7 @@ jobs:
 
   Deliver:
 
+    needs: build
 
     runs-on: ubuntu-latest
 
@@ -121,13 +129,18 @@ jobs:
           keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
           keyPassword: ${{ secrets.KEY_PASSWORD }}
 
+
+      - name: Download Artifacts
+        uses: actions/download-artifact@v1
+        with:
+          name: CICDArtifacts
       - name: upload artifact to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
           appId: ${{secrets.FIREBASE_APP_ID}}
           token: ${{secrets.FIREBASE_TOKEN}}
           groups: yovo
-          file: app/build/outputs/apk/release/app-release-unsigned-signed.apk
+          file: CICDArtifacts/app-release-unsigned-signed.apk
 
   Deploy:
     needs: build
