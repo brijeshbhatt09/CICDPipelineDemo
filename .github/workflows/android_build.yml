@@ -28,7 +28,7 @@ jobs:
         run: ./gradlew test
 
       - name: Build Project
-        run: ./gradlew bundleRelease
+        run: ./gradlew assemble
 
       - name: Build Analysis
         run: ./gradlew lint
@@ -44,7 +44,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: CICDArtifacts
-          path: app/build/outputs/bundle/release/app-release.aab
+          path: app/build/outputs/apk/release/app-release.apk
 
       - name: upload app to pCloudy
         env:
@@ -56,7 +56,7 @@ jobs:
             echo "Verify install of curl on Ubuntu"
             curl --version
             echo "upload apk"
-            curl -X POST -F "file=@/home/runner/work/CICDPipelineDemo/CICDPipelineDemo/app/build/outputs/bundle/release/app-release.aab" -F "source_type=raw" -F "token=c5dpj77vk3rhff67by4rt9xm" -F "filter=all" https://device.pcloudy.com/api/upload_file
+            curl -X POST -F "file=@/home/runner/work/CICDPipelineDemo/CICDPipelineDemo/app/build/outputs/apk/release/app-release.apk" -F "source_type=raw" -F "token=c5dpj77vk3rhff67by4rt9xm" -F "filter=all" https://device.pcloudy.com/api/upload_file
 
 
   test:
@@ -123,14 +123,14 @@ jobs:
           java-version: 1.8
 
       - name: Build Project
-        run: ./gradlew assembleRelease
+        run: ./gradlew bundleRelease
 
       - name: Release app to internal track
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.PLAYSTORE_ACCOUNT_KEY }}
           packageName: com.cicdpipeline
-          releaseFile: app/build/outputs/apk/release/app-release.apk
+          releaseFile: app/build/outputs/bundle/release/app-release.aab
           track: production
           whatsNewDirectory: distribution/whatsnew
 
