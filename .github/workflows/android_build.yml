@@ -66,7 +66,7 @@ jobs:
             echo "Verify install of curl on Ubuntu"
             curl --version
             echo "upload apk"
-            curl -X POST -F "file=@/home/runner/work/CICDPipelineDemo/CICDPipelineDemo/app/build/outputs/apk/release/app-release.apk" -F "source_type=raw" -F "token=c5dpj77vk3rhff67by4rt9xm" -F "filter=all" https://device.pcloudy.com/api/upload_file
+            curl -X POST -F "file=@/home/runner/work/CICDPipelineDemo/CICDPipelineDemo/app/build/outputs/apk/release/app-release-unsigned-signed.apk" -F "source_type=raw" -F "token=c5dpj77vk3rhff67by4rt9xm" -F "filter=all" https://device.pcloudy.com/api/upload_file
 
 
   test:
@@ -134,6 +134,16 @@ jobs:
 
       - name: Build Project
         run: ./gradlew bundleRelease
+
+      - name: Sign Bundle
+        id: sign
+        uses: r0adkll/sign-android-release@v1
+        with:
+          releaseDirectory: app/build/outputs/bundle/release
+          signingKeyBase64: ${{ secrets.SIGNING_KEY }}
+          alias: ${{ secrets.ALIAS }}
+          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
+          keyPassword: ${{ secrets.KEY_PASSWORD }}
 
       - name: Release app to internal track
         uses: r0adkll/upload-google-play@v1
