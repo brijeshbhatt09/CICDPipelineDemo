@@ -101,7 +101,6 @@ jobs:
 
 
   Deliver:
-    needs: test
 
     runs-on: ubuntu-latest
 
