@@ -21,14 +21,7 @@ jobs:
       - name: Clean
         run: ./gradlew clean
 
-      - name: Compile
-        run: ./gradlew compileDebugSources
 
-      - name: Unit Tests
-        run: ./gradlew test
-
-      - name: Build Project
-        run: ./gradlew assembleRelease
 
       - name: Sign Apk
         id: sign
