@@ -71,51 +71,27 @@ jobs:
 
   test:
     needs: build
-
-    runs-on: macos-latest # the machine type
-
-    strategy: # we are using strategy if we need to run on parallel with different devices and version
-      matrix:
-        api-level: [29] #Google api level for example [25,23,28]
-        target: [default]
+    runs-on: ubuntu-latest # the machine type
     steps:
       - uses: actions/checkout@v2 #checkout the code
         with:
-          repository: abhi8130/YovoAndroidAutomation
+          repository: abhi8130/YovoAndroidAutomation     
       - name: Set up JDK 1.8
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - name: Install and Run Appium Server
-        run: |
-          chmod +x ./scripts/RunAppiumServer.sh # install and run appium server in the background
-          ./scripts/RunAppiumServer.sh
-      - name: Run Appium Tests
-        uses: reactivecircus/android-emulator-runner@v1 # install and create the Emulator
-        with:
-          api-level: ${{ matrix.api-level }}
-          target: ${{ matrix.target }}
-          arch: x86_64
-          profile: Nexus 6
-          script: mvn test # running our test with info to check the results
-
+      - name: Run tests on pCloudy  
+        run: mvn clean test
 
   Distribution:
-
     needs: test
-
     runs-on: ubuntu-latest
-
     steps:
-
       - uses: actions/checkout@v1
-
-
       - name: Set Up JDK
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-
 
       - name: Download Artifacts
         uses: actions/download-artifact@v1
