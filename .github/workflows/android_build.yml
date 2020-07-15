@@ -3,10 +3,16 @@ name: Android build
 on: push
 
 jobs:
+
   build:
+
     runs-on: ubuntu-latest
+
     steps:
+
       - uses: actions/checkout@v1
+
+
       - name: Set Up JDK
         uses: actions/setup-java@v1
         with:
@@ -22,7 +28,17 @@ jobs:
         run: ./gradlew test
 
       - name: Build Project
-        run: ./gradlew assemble
+        run: ./gradlew assembleRelease
+
+      - name: Sign Apk
+        id: sign
+        uses: r0adkll/sign-android-release@v1
+        with:
+          releaseDirectory: app/build/outputs/apk/release
+          signingKeyBase64: ${{ secrets.SIGNING_KEY }}
+          alias: ${{ secrets.ALIAS }}
+          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
+          keyPassword: ${{ secrets.KEY_PASSWORD }}
 
       - name: Build Analysis
         run: ./gradlew lint
@@ -37,24 +53,23 @@ jobs:
       - name: Artifacts APK
         uses: actions/upload-artifact@v1
         with:
-         name: CICDArtifacts
-         path: app/build/outputs/apk/release/app-release.apk  
-      
+          name: CICDArtifacts
+          path: app/build/outputs/apk/release/app-release-unsigned-signed.apk
+
       - name: upload app to pCloudy
         env:
           PCLOUDY_USERNAME: ${{ secrets.PCLOUDY_USERNAME }}
           PCLOUDY_ACCESS_KEY: ${{ secrets.PCLOUDY_ACCESS_KEY }}
         run: |
-           echo "install cURL"
-           sudo apt install curl
-           echo "Verify install of curl on Ubuntu"
-           curl --version    
-           echo "upload apk"
-           curl -X POST -F "file=@/home/runner/work/CICDPipelineDemo/CICDPipelineDemo/app/build/outputs/apk/release/app-release.apk" -F "source_type=raw" -F "token=c5dpj77vk3rhff67by4rt9xm" -F "filter=all" https://device.pcloudy.com/api/upload_file
-
+            echo "install cURL"
+            sudo apt install curl
+            echo "Verify install of curl on Ubuntu"
+            curl --version
+            echo "upload apk"
+            curl -X POST -F "file=@/home/runner/work/CICDPipelineDemo/CICDPipelineDemo/app/build/outputs/apk/release/app-release-unsigned-signed.apk" -F "source_type=raw" -F "token=c5dpj77vk3rhff67by4rt9xm" -F "filter=all" https://device.pcloudy.com/api/upload_file
   test:
     needs: build
-    runs-on: ubuntu-latest # the machine type   
+    runs-on: ubuntu-latest # the machine type
     steps:
       - uses: actions/checkout@v2 #checkout the code
         with:
@@ -63,8 +78,9 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - name: Run tests on pCloudy   
-        env:
-            PCLOUDY_USERNAME: ${{ secrets.PCLOUDY_USERNAME }}
-            PCLOUDY_ACCESS_KEY: ${{ secrets.PCLOUDY_ACCESS_KEY}} 
+      - name: Run tests on pCloudy  
         run: mvn clean test
+      - name: Try to fail
+        run: exit 1
+      - name: Print message if we don't fail
+        run: echo Should not get here 
