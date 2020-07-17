@@ -80,7 +80,7 @@ jobs:
           java-version: 1.8
       - name: Run tests on pCloudy  
         run: mvn clean test
-      - if: ${{always()}}
+      - if: ${{ failure() }}
         run: exit 1
 
   Distribution:
