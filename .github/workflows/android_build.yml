@@ -78,13 +78,13 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
+        continue-on-error: false
+      - name: Check on failures
+        run: exit 1
       - name: Run tests on pCloudy  
         id: pCloudy
         run: mvn clean test
-        continue-on-error: false
-      - name: Check on failures
-        if: steps.pCloudy.outputs.status == 'failure'
-        run: exit 1
+
         
   Distribution:
     needs: test
