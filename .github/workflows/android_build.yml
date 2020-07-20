@@ -64,7 +64,7 @@ jobs:
             echo "Verify install of curl on Ubuntu"
             curl --version
             echo "upload apk"
-            curl -X POST -F "file=@/home/runner/work/CICDPipelineDemo/CICDPipelineDemo/app/build/outputs/apk/release/app-release-unsigned-signed.apk" -F "source_type=raw" -F "token=c5dpj77vk3rhff67by4rt9xm" -F "filter=all" https://device.pcloudy.com/api/upload_file
+            curl -X POST -F "file=@/home/runner/work/CICDPipelineDemo/CICDPipelineDemo/app/build/outputs/apk/release/app-release-unsigned-signed.apk" -F "source_type=raw" -F "token=49gvbyp9zkqwtgn26g4yhncs" -F "filter=all" https://device.pcloudy.com/api/upload_file
 
   test:
     needs: build
