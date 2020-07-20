@@ -83,8 +83,8 @@ jobs:
         run: mvn clean test
         continue-on-error: false
       - name: Check on failures
-        if: steps.pCloudy.outputs.status == 'failure'
-        run: echo 'failure'
+        if: steps.pCloudy.outputs.status == 'failures'
+        run: exit 1
         
   Distribution:
     needs: test
