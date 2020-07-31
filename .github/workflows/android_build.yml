@@ -25,7 +25,7 @@ jobs:
 
       - name: Sign Apk
         id: sign
-        uses: brijeshbhatt09/sign-android-release@v1
+        uses: brijeshbhatt09/sign-android-release
         with:
           releaseDirectory: app/build/outputs/apk/release
           signingKeyBase64: ${{ secrets.SIGNING_KEY }}
